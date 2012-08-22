@@ -7,25 +7,52 @@ public class demoTesting extends PApplet {
 
 	PGraphics orb;
 
+	float[] x = new float[2];
+	float[] y = new float[2];
+	float segLength = 50;
+
 	public void setup() {
-		size(200, 200);
-	    stroke(255);
-	    background(192, 64, 0);
+	  size(200, 200);
+	  smooth(); 
+	  background(0);
+	  noStroke();
+	  fill(226);
+	  rect(0,0,height/3,width/3);
+	  rect((width/3)*2,0,height/3,width/3);
+	  rect(0,(width/3)*2,height/3,width/3);
+	  rect((width/3)*2,(width/3)*2,height/3,width/3);
+	  rectMode(CENTER);
+	  rect(width/2,height/2,width/3,height/3);
+	  //rect(width/2,height/2,width/3,height/3);
+	  //rect(width/2,height/2,width/3,height/3);
+	  //rect(width/2,height/2,width/3,height/3);
 	}
 
+	/**
 	public void draw() {
-		//line(150,25,mouseX,mouseY);
-		size(200,200);
-		rectMode(CENTER);
-		rect(100,100,20,100);
-		ellipse(100,70,60,60);
-		ellipse(81,70,16,32); 
-		ellipse(119,70,16,32); 
-		line(90,150,80,160);
-		line(110,150,120,160);
+	  background(226);
+	  dragSegment(0, mouseX, mouseY);
+	  dragSegment(1, x[0], y[0]);
 	}
 
-	/**void setXY() {
+	void dragSegment(int i, float xin, float yin) {
+	  float dx = xin - x[i];
+	  float dy = yin - y[i];
+	  float angle = atan2(dy, dx);  
+	  x[i] = xin - cos(angle) * segLength;
+	  y[i] = yin - sin(angle) * segLength;
+	  segment(x[i], y[i], angle);
+	}
+
+	void segment(float x, float y, float a) {
+	  pushMatrix();
+	  translate(x, y);
+	  rotate(a);
+	  line(0, 0, segLength, 0);
+	  popMatrix();
+	}
+
+	void setXY() {
 	  x = x + xspeed; y = y + yspeed;
 	  if (x >780) {xspeed = (int)(random(-2,-3));}
 	  if (y < 20)  {yspeed = (int)(random(2,3));}
