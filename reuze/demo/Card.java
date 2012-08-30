@@ -1,22 +1,20 @@
 package reuze.demo;
 
-import java.util.*;
-
-public class demoCard implements Comparable
+public class Card implements Comparable<Object>
 {
     //Data
     private int rank;
     private char suit;
  
     //default constructor
-    public demoCard()
+    public Card()
     {
         suit = '\u0003';
         rank = 0;
     }
  
     //Constructor
-    public demoCard(char theSuit, int theRank)
+    public Card(char theSuit, int theRank)
     {
         this.suit = theSuit;
         this.rank = theRank;
@@ -61,7 +59,7 @@ public class demoCard implements Comparable
     //Compares 2 cards Rank and Suite
     public int compareTo(Object anotherCard)
     {
-        demoCard another = (demoCard)anotherCard;
+        Card another = (Card)anotherCard;
         if(this.rank > another.rank)
         {
             return 1;

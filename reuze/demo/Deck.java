@@ -1,30 +1,30 @@
 package reuze.demo;
 
-//CardPile - holds a "pile" of Cards and has methods to access them
+//Deck - holds a "pile" of Cards and has methods to access them
 
 import java.util.*;
 
-public class CardPile
+public class Deck
 {
   //data - uses an ArrayList of Cards to actually store them
-  private ArrayList<demoCard> pile;
+  private ArrayList<Card> pile;
 
   //constructor - creates the ArrayList that will be used
-  public CardPile()
+  public Deck()
   {
-      pile = new ArrayList<demoCard>();
+      pile = new ArrayList<Card>();
   }
 
   //methods
 
   //add - puts a Card at the end ("bottom") of the pile.  It just uses the ArrayList method
-  public void add(demoCard aCard)
+  public void add(Card aCard)
   {
       pile.add(aCard);
   }
 
   //getTopCard - removes and returns the "top" card of the pile.  It just uses the ArrayList method
-  public demoCard getTopCard()
+  public Card getTopCard()
   {
       return pile.remove(0);
   }
@@ -56,7 +56,7 @@ public class CardPile
       {
           if (size() > 0)           //if there is anything here to shuffle, then...
           {
-        	  demoCard topCard = pile.remove(0);              //take off the top card...
+        	  Card topCard = pile.remove(0);              //take off the top card...
               int newPosition = rand.nextInt(pile.size());    //...find a new spot for it in a random position
               pile.add(newPosition, topCard);                 //...and put it back there
           }
