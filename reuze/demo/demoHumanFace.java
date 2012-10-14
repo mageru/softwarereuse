@@ -1,20 +1,26 @@
 package reuze.demo;
 
 import processing.core.PApplet;
-import processing.core.PGraphics;
 
 /**
  * 3D Face implemented with Processing libraries.
- * @author Justin Miller
- *
+ * @author Justin Miller 10/14/2012 Artificial Intelligence
+ * 
  */
 public class demoHumanFace extends PApplet {
 
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = -9078222686705451689L;
+	
+	/** The yspeed. */
 	int x, y, xspeed, yspeed;
+	
+	/** The starting. */
 	boolean starting = true;
-	PGraphics orb;
 
+	/* Setup window, start location, and animation speed
+	 * @see processing.core.PApplet#setup()
+	 */
 	public void setup() {
 		size(400, 400);
 		frameRate(30);
@@ -25,6 +31,9 @@ public class demoHumanFace extends PApplet {
 		yspeed = -4;
 	}
 
+	/* Define animation to occur as mouse moves.
+	 * @see processing.core.PApplet#draw()
+	 */
 	public void draw() {
 		background(255);
 		x = mouseX;
