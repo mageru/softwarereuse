@@ -24,20 +24,20 @@ public class demoPropoLogic extends JApplet {
 	private static final long serialVersionUID = 6006363902138561283L;
 	private JTextField textField;
 	private ArrayList<String> assertions = new ArrayList<String>();
-	TextArea textArea = new TextArea();
+	private TextArea textArea = new TextArea();
 	private JTextField testField;
 	private ml_KnowledgeBase kb = new ml_KnowledgeBase();
 	private JLabel lblNewLabel = new JLabel("SUCCESS");
 	private JLabel lblFalse = new JLabel("FALSE");
-	JButton btnHelp = new JButton("Help");
-	JInternalFrame internalFrame = new JInternalFrame("Help Pane");
-	Button button = new Button("Close Help");
+	private JButton btnHelp = new JButton("Help");
+	private JInternalFrame internalFrame = new JInternalFrame("Help Pane");
+	private Button button = new Button("Close Help");
 	/**
 	 * Create the applet.
 	 * @return 
 	 */
 	public void init() {
-		this.resize(460, 300);
+		this.resize(460, 310);
 	}
 	public demoPropoLogic() {
 		setLocation(10, 12);
@@ -73,10 +73,10 @@ public class demoPropoLogic extends JApplet {
 		textField = new JTextField();
 		textField.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				String text = textField.getText();
-				assertions.add(text);
-				kb.tell(text);
-				textArea.append(text+"\n");
+				String fieldText = textField.getText();
+				assertions.add(fieldText);
+				kb.tell(fieldText);
+				textArea.append(fieldText+"\n");
 			}
 		});
 		textField.setBounds(149, 31, 196, 23);
@@ -88,6 +88,7 @@ public class demoPropoLogic extends JApplet {
 			public void actionPerformed(ActionEvent arg0) {
 				String text = textField.getText();
 				assertions.add(text);
+				kb.tell(text);
 				textArea.append(text+"\n");
 			}
 		});
@@ -109,6 +110,7 @@ public class demoPropoLogic extends JApplet {
 		
 		//JLabel lblNewLabel = new JLabel("SUCCESS");
 		internalFrame.setVisible(false);
+		
 		lblNewLabel.setVisible(false);
 		lblNewLabel.setForeground(Color.GREEN);
 		lblNewLabel.setFont(new Font("Calibri", Font.BOLD, 31));
@@ -119,14 +121,24 @@ public class demoPropoLogic extends JApplet {
 		btnVerify.setBounds(357, 228, 89, 23);
 		btnVerify.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				String verify = testField.getText().toString();
-				if(kb.askWithDpll(verify)) {
-					lblNewLabel.setVisible(true);
-					lblFalse.setVisible(false);
-				}
+				if(!testField.getText().isEmpty()) {
+					String verify = testField.getText().toString();
+					if(kb.askWithDpll(verify) == true) {
+						lblNewLabel.setVisible(true);
+						lblFalse.setVisible(false);
+					}
+					else if(kb.askWithDpll(verify) == false){
+						lblNewLabel.setVisible(false);
+						lblFalse.setVisible(true);
+					}
+					else {
+						lblNewLabel.setVisible(false);
+						lblFalse.setVisible(false);
+					}
+				} 
 				else {
 					lblNewLabel.setVisible(false);
-					lblFalse.setVisible(true);
+					lblFalse.setVisible(false);
 				}
 			}
 		});
