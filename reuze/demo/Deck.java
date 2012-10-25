@@ -1,54 +1,74 @@
 package reuze.demo;
 
-//Deck - holds a "pile" of Cards and has methods to access them
-
 import java.util.*;
 
+/**
+ * The deck class represents a selection of cards to be used with the WAR game.
+ * @author Justin Joseph Miller
+ *
+ */
 public class Deck
 {
-  //data - uses an ArrayList of Cards to actually store them
-  private ArrayList<Card> pile;
+private ArrayList<Card> deck;
 
-  //constructor - creates the ArrayList that will be used
-  public Deck()
+/**
+ * Default deck constructor
+ */
+public Deck()
   {
-      pile = new ArrayList<Card>();
+      deck = new ArrayList<Card>();
   }
 
-  //methods
-
-  //add - puts a Card at the end ("bottom") of the pile.  It just uses the ArrayList method
-  public void add(Card aCard)
+/**
+ * Add a card to the current deck.
+ * @param aCard
+ */
+public void add(Card aCard)
   {
-      pile.add(aCard);
+      deck.add(aCard);
   }
 
   //getTopCard - removes and returns the "top" card of the pile.  It just uses the ArrayList method
-  public Card getTopCard()
+/**
+ * Pull the top card off the deck and return it.
+ * @return Card	current top card of deck
+ */
+public Card getTopCard()
   {
-      return pile.remove(0);
+      return deck.remove(0);
   }
 
-  //toString - returns a String representation of the pile.  It just uses the ArrayList method
-  public String toString()
+/**
+ * toString - returns a String representation of the deck.
+ * @return string object that represents the deck
+ * @see java.lang.Object#toString()
+ */
+public String toString()
   {
-      return pile.toString();
+      return deck.toString();
   }
 
-  //size - returns the size of the pile.  It just uses the ArrayList method
-  public int size()
+/**
+ * Get the number of cards in the deck.
+ * @return	number of cards in deck
+ */
+public int size()
   {
-      return pile.size();
+      return deck.size();
   }
 
-  //clear - empties the pile.  It just uses the ArrayList method
-  public void clear()
+/**
+ * Empties the current deck.
+ */
+public void clear()
   {
-      pile.clear();
+      deck.clear();
   }
 
-  //shuffle - randomly reorders the pile.
-  public void shuffle()
+/**
+ * Shuffles the deck
+ */
+public void shuffle()
   {
       Random rand = new Random();
 
@@ -56,9 +76,9 @@ public class Deck
       {
           if (size() > 0)           //if there is anything here to shuffle, then...
           {
-        	  Card topCard = pile.remove(0);              //take off the top card...
-              int newPosition = rand.nextInt(pile.size());    //...find a new spot for it in a random position
-              pile.add(newPosition, topCard);                 //...and put it back there
+        	  Card topCard = deck.remove(0);              //take off the top card...
+              int newPosition = rand.nextInt(deck.size());    //...find a new spot for it in a random position
+              deck.add(newPosition, topCard);                 //...and put it back there
           }
       }
   }

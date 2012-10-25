@@ -1,38 +1,49 @@
 package reuze.demo;
 
+/**
+ * The card class defines what a card is for use in various games which might use cards.
+ * @author Justin Joseph Miller
+ *
+ */
 public class Card implements Comparable<Object>
 {
-    //Data
     private int rank;
     private char suit;
  
-    //default constructor
-    public Card()
-    {
-        suit = '\u0003';
-        rank = 0;
-    }
- 
-    //Constructor
+    /**
+     * Constructor takes the two params required for a card to exist.
+     * @param theSuit	associated suite for card (dimaond,hearts,spades,clubs)
+     * @param theRank
+     */
     public Card(char theSuit, int theRank)
     {
         this.suit = theSuit;
         this.rank = theRank;
     }
  
-    //get Rank of the card
+    /**
+     * Get the rank of the card.
+     * @return rank 	the value of the card in comparison to other cards
+     */
     public int getRank()
     {
         return rank;
     }
  
-    //get Suite of the card
+    /**
+     * Get the suite of the card
+     * @return suite 	the suite of the card (diamond, hearts, spades, or clubs)
+     */
     public char getSuit()
     {
         return suit;
     }
  
-    //toString - returns its representation as a String
+    /**
+     * Return the String representation of the object
+     * @return String	Representation of card including suit and rank.
+     * @see java.lang.Object#toString()
+     */
     public String toString()
     {
         //Checks the rank of the cards and Changes them to the correct character
@@ -56,7 +67,11 @@ public class Card implements Comparable<Object>
         return suit + "" + rank;
     }
  
-    //Compares 2 cards Rank and Suite
+    /**
+     * Define how to compare two cards for the game of War.
+     * @return int	the results of the comparison 1 for greater, -1 for less, 0 for equal
+     * @see java.lang.Comparable#compareTo(java.lang.Object)
+     */
     public int compareTo(Object anotherCard)
     {
         Card another = (Card)anotherCard;

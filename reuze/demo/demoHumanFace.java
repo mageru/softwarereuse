@@ -148,13 +148,13 @@ public class demoHumanFace extends PApplet {
 
 		beginShape(); // start - hat
 		fill(0, 0, 0, 255);
-		curveVertex(map(x, 0, width, 78, 144), map(y, 0, height, 69, 100));
-		curveVertex(map(x, 0, width, 102, 174), map(y, 0, height, 20, 51));
-		curveVertex(map(x, 0, width, 227, 293), map(y, 0, height, 19, 50));
-		curveVertex(map(x, 0, width, 250, 343), map(y, 0, height, 63, 94));
-		curveVertex(map(x, 0, width, 78, 144), map(y, 0, height, 69, 100));
-		curveVertex(map(x, 0, width, 102, 174), map(y, 0, height, 20, 51));
-		curveVertex(map(x, 0, width, 227, 293), map(y, 0, height, 19, 50));
+		curveVertex(map(x, 0, width, 78, 144), map(y, 0, height, 69, 110));
+		curveVertex(map(x, 0, width, 102, 174), map(y, 0, height, 20, 61));
+		curveVertex(map(x, 0, width, 227, 293), map(y, 0, height, 19, 60));
+		curveVertex(map(x, 0, width, 250, 343), map(y, 0, height, 63, 104));
+		curveVertex(map(x, 0, width, 78, 144), map(y, 0, height, 69, 110));
+		curveVertex(map(x, 0, width, 102, 174), map(y, 0, height, 20, 61));
+		curveVertex(map(x, 0, width, 227, 293), map(y, 0, height, 19, 60));
 		endShape(); // end - hat
 	}
 }
